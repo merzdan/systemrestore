@@ -1,4 +1,11 @@
+#include <stdio.h>
+#include <Windows.h>
+#include <SrRestorePtApi.h>
+#include <atlconv.h>
+#include <tchar.h>
 
+
+using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -9,7 +16,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	char* aStr1 = "";
 	USES_CONVERSION;
 	char* aStr = (char*) T2CA(argv[1]);
-	if(argv[1]) if(argv[2]) aStr1 = (char*)T2CA(argv[2]);
+	if (argv[1]) {
+		if (argv[2]) aStr1 = (char*)T2CA(argv[2]);
+	}
+	else {
+		printf("Please enter argument! Argument for help \"?\"");
+		return 1;
+	}
 	if (aStr){
 		if (strcmp(aStr, "?") == 0) flag = 0;
 		if (strcmp(aStr, "1") == 0) flag = 1;
@@ -26,7 +39,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				RstPt.dwRestorePtType = APPLICATION_INSTALL;
 				if (argv[1]) {
 					if (argv[2]) _tcscpy_s(RstPt.szDescription, argv[2]);
-					else _tcscpy_s(RstPt.szDescription, _T("Restore                        Point"));
+					else _tcscpy_s(RstPt.szDescription, _T("Restore  Point"));
 				}
 				//-------------------
 				if (!SRSetRestorePoint(&RstPt, &MgrStat))
