@@ -27,7 +27,6 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (strcmp(aStr, "?") == 0) flag = 0;
 		if (strcmp(aStr, "1") == 0) flag = 1;
 		if (strcmp(aStr, "2") == 0) flag = 2;
-		if (strcmp(aStr, "3") == 0) flag = 3;
 	}
  
 	if (argv[1]) if (argv[2]) if (aStr1) flag1 = atoi(aStr1);
@@ -81,17 +80,14 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		} break;
 
-	case 3: { system("1.vbs"); } break;
-
 	case 0: {
 				printf(".....................................................................\n");
-				printf("System Restore Utility v0.2 by Merzlyakov Daniil, Krylov Anton, IU8-93, 2015\n");
+				printf("System Restore Utility v0.1 by Merzlyakov Daniil, Krylov Anton, IU8-63, 2014\n");
 				printf("\n-------------------------------------------------------------------\n");
 				printf("syntax: SystemRestore N [p]\n");
 				printf("\n-------------------------\n");
 				printf("1 - Create Restore Point, p - name restore point\n");
 				printf("2 - Remove Restore Point, p - number restore point\n");
-				printf("3 - Get enumerate restore point\n");
 				return 0;
 	} break;
 	}
