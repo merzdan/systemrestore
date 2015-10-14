@@ -40,7 +40,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	case 1: {   printf("Restore...wait\n");
 				RstPt.dwEventType = BEGIN_SYSTEM_CHANGE;
-				RstPt.dwRestorePtType = APPLICATION_INSTALL;
+				RstPt.dwRestorePtType = MODIFY_SETTINGS;
 				if (argv[1]) {
 					if (argv[2]) _tcscpy_s(RstPt.szDescription, argv[2]);
 					else _tcscpy_s(RstPt.szDescription, _T("Restore  Point"));
@@ -51,6 +51,7 @@ int _tmain(int argc, _TCHAR* argv[])
 					printf("Unable to set restore point. Error %ld\n",
 						MgrStat.nStatus);
 					if (MgrStat.nStatus == 5) printf("!!! RUN PROGRAM AS ADMINISTRATOR !!!\n");
+					if (MgrStat.nStatus == 1058) printf("System Restore is turned off.\n");
 					return 1;
 				}
 				//--------------------------
@@ -84,9 +85,10 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		} break;
 
-	case 3: { 
+	case 3: {
+		      printf("Please Wait dialog box! \n");
 		      if (!system("lib.vbs")) { 
-		          printf("Please Wait dialog box! \nIf the dialog box does not appear, it means no system restore point! \n -----------------------------------------"); 
+		          printf("If the dialog box does not appear, it means no system restore point! \n -----------------------------------------"); 
 	          } else {
 		          printf("--- File lib.vbs not found! ---");
 	          }
